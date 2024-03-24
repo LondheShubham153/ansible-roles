@@ -1,0 +1,16 @@
+
+- name: Install Nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: Ensure Nginx is running
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Deploy index.html
+  ansible.builtin.copy:
+    src: index.html
+    dest: /var/www/html/index.html
